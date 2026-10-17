@@ -14,10 +14,12 @@ height = 122.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1804814031]
 script = ExtResource("1_3rerk")
+speed = null
 weapon_distance = 200.0
 max_health = 20
 
 [node name="Weapon" parent="." unique_id=1968143525 instance=ExtResource("2_3rfka")]
+position = Vector2(73, -5)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267373887]
 texture = ExtResource("6_3nfmf")

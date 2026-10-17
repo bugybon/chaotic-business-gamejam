@@ -44,7 +44,7 @@ func _on_change_cooktime(seconds:int) -> void:
 func _on_start_button_start_cooking() -> void:
 	timer.start(cooktime/10)
 	cooking = true
-	food.start_cooking()
+	if food != null: food.start_cooking()
 	disable_buttons(true)
 
 

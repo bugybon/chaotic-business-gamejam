@@ -37,5 +37,4 @@ func apply_movement():
 	
 	var mouse_direction:Vector2 = weapon_pivot.global_position.direction_to(get_global_mouse_position())
 	weapon.global_position = weapon_pivot.global_position + mouse_direction * weapon_distance
-	print(weapon_pivot.global_position, global_position)
-	weapon.look_at(get_global_mouse_position())
+	weapon.rotation = mouse_direction.angle()
