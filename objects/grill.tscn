@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bytdmrn425dky"]
+
+[ext_resource type="Script" uid="uid://b3vt5xtyqcpie" path="res://scripts/grill.gd" id="1_fcmsg"]
+[ext_resource type="Texture2D" uid="uid://bh0xc8yfdwl3s" path="res://icon.svg" id="1_y8tck"]
+[ext_resource type="Script" uid="uid://0hsbo5prmj4t" path="res://scripts/seconds_change_button.gd" id="3_v1fxj"]
+[ext_resource type="Script" uid="uid://dh824dwqt1700" path="res://scripts/start_button.gd" id="4_fu7ck"]
+
+[node name="Grill" type="Node2D" unique_id=914360036]
+script = ExtResource("1_fcmsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2122149179]
+modulate = Color(0.15294118, 0, 0, 1)
+texture = ExtResource("1_y8tck")
+
+[node name="Timer" type="Timer" parent="." unique_id=1124007355]
+
+[node name="Control" type="Control" parent="." unique_id=533190465]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -22.0
+offset_top = -191.0
+offset_right = 21.0
+offset_bottom = -95.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1955818203]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpButtons" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=886340204]
+layout_mode = 2
+
+[node name="MinuteUpButton" type="Button" parent="Control/VBoxContainer/UpButtons" unique_id=2085318724 groups=["seconds_buttons"]]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_rotation = 3.1415927
+text = "V"
+script = ExtResource("3_v1fxj")
+seconds = 60
+
+[node name="SecondsUpButton" type="Button" parent="Control/VBoxContainer/UpButtons" unique_id=1554944260 groups=["seconds_buttons"]]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_rotation = 3.1415927
+text = "V"
+script = ExtResource("3_v1fxj")
+seconds = 10
+
+[node name="TimeLabel" type="Label" parent="Control/VBoxContainer" unique_id=1512636056]
+layout_mode = 2
+size_flags_vertical = 1
+text = "05:00"
+metadata/_edit_use_anchors_ = true
+
+[node name="DownButtons" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1709973879]
+layout_mode = 2
+
+[node name="MinuteDownButton" type="Button" parent="Control/VBoxContainer/DownButtons" unique_id=868530429 groups=["seconds_buttons"]]
+layout_mode = 2
+text = "V"
+script = ExtResource("3_v1fxj")
+seconds = -60
+
+[node name="SecondsDownButton" type="Button" parent="Control/VBoxContainer/DownButtons" unique_id=181423243 groups=["seconds_buttons"]]
+layout_mode = 2
+text = "V"
+script = ExtResource("3_v1fxj")
+seconds = -10
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer" unique_id=348054930]
+layout_mode = 2
+text = "Start"
+script = ExtResource("4_fu7ck")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/VBoxContainer/UpButtons/MinuteUpButton" to="Control/VBoxContainer/UpButtons/MinuteUpButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/UpButtons/SecondsUpButton" to="Control/VBoxContainer/UpButtons/SecondsUpButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/DownButtons/MinuteDownButton" to="Control/VBoxContainer/DownButtons/MinuteDownButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/DownButtons/SecondsDownButton" to="Control/VBoxContainer/DownButtons/SecondsDownButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="Control/VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="start_cooking" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_start_cooking"]

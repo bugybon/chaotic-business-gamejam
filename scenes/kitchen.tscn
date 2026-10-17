@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c2jbsai4t8e8k"]
+
+[ext_resource type="PackedScene" uid="uid://bytdmrn425dky" path="res://objects/grill.tscn" id="1_7ilqw"]
+
+[node name="Kitchen" type="Node2D" unique_id=512525790]
+
+[node name="Grill" parent="." unique_id=914360036 instance=ExtResource("1_7ilqw")]
+position = Vector2(89, 243)

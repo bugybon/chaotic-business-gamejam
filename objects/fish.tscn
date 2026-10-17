@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c00lrexnw36os"]
+
+[ext_resource type="Texture2D" uid="uid://bh0xc8yfdwl3s" path="res://icon.svg" id="1_elpeb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8321d"]
+size = Vector2(130, 129)
+
+[node name="Fish" type="RigidBody2D" unique_id=1619280846]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1524620873]
+texture = ExtResource("1_elpeb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537653894]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_8321d")
