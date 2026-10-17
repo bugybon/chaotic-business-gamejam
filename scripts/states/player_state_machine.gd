@@ -14,12 +14,9 @@ func _state_transition() -> void:
 	if Input.is_action_just_pressed("attack_ranged"):
 		state.finished.emit("Ranged")
 		pass
-	elif Input.is_action_just_pressed("attack_melee"):
-		state.finished.emit("Melee")
-		pass
 	
 	match state.name:
-		"Melee","Ranged":
+		"Ranged":
 			if attack_finished == true:
 				state.finished.emit("Idle")
 		"Idle":

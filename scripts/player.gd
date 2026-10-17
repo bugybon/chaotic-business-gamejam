@@ -4,7 +4,8 @@ extends CombatEntity
 @onready var weapon: Node2D = $Weapon
 @export var speed = 100
 @onready var current_state: Label = $CurrentState
-
+@onready var weapon_pivot: Marker2D = $WeaponPivot
+@export var weapon_distance:float = 10.0
 signal attack_finished
 
 var direction = "front"
@@ -33,9 +34,8 @@ func _get_direction():
 
 func apply_movement():
 	velocity = input_direction * speed
+	
+	var mouse_direction:Vector2 = weapon_pivot.global_position.direction_to(get_global_mouse_position())
+	weapon.global_position = weapon_pivot.global_position + mouse_direction * weapon_distance
+	print(weapon_pivot.global_position, global_position)
 	weapon.look_at(get_global_mouse_position())
-
-func _on_area_2d_vision_area_exited(area: Area2D) -> void:
-	var target = area.get_parent()  # the Hurtbox's parent is the entity itself
-	if target is CombatEntity:
-		target.visible = false

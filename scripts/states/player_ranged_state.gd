@@ -9,6 +9,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 func physics_update(_delta: float) -> void:
 	player.current_state.text = RANGED
 	input_direction = player._get_direction()
+	player.apply_movement()
 	player.move_and_slide()
 	#if attack_finished == true:
 		#if input_direction != Vector2.ZERO:

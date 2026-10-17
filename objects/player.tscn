@@ -14,12 +14,22 @@ height = 122.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1804814031]
 script = ExtResource("1_3rerk")
+weapon_distance = 200.0
+max_health = 20
 
 [node name="Weapon" parent="." unique_id=1968143525 instance=ExtResource("2_3rfka")]
-position = Vector2(154, 1)
 
-[node name="StateMachine" type="Node" parent="." unique_id=710805598]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267373887]
+texture = ExtResource("6_3nfmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1296323848]
+shape = SubResource("CapsuleShape2D_8321d")
+
+[node name="WeaponPivot" type="Marker2D" parent="." unique_id=439867900]
+
+[node name="StateMachine" type="Node" parent="." unique_id=710805598 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_i825w")
+initial_state = NodePath("Idle")
 
 [node name="Moving" type="Node" parent="StateMachine" unique_id=335193929]
 script = ExtResource("3_3rfka")
@@ -30,8 +40,8 @@ script = ExtResource("4_i8sra")
 [node name="Ranged" type="Node" parent="StateMachine" unique_id=1801741218]
 script = ExtResource("5_4vq5b")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267373887]
-texture = ExtResource("6_3nfmf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1296323848]
-shape = SubResource("CapsuleShape2D_8321d")
+[node name="CurrentState" type="Label" parent="." unique_id=508296380]
+offset_left = -13.0
+offset_top = 76.0
+offset_right = 27.0
+offset_bottom = 99.0
