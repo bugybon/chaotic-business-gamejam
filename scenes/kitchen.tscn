@@ -1,8 +1,23 @@
 [gd_scene format=3 uid="uid://c2jbsai4t8e8k"]
 
 [ext_resource type="PackedScene" uid="uid://bytdmrn425dky" path="res://objects/grill.tscn" id="1_7ilqw"]
+[ext_resource type="PackedScene" uid="uid://c00lrexnw36os" path="res://objects/fish.tscn" id="2_mrp8g"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8321d"]
 
 [node name="Kitchen" type="Node2D" unique_id=512525790]
 
+[node name="Fish2" parent="." unique_id=1804225676 instance=ExtResource("2_mrp8g")]
+position = Vector2(585, 313)
+
 [node name="Grill" parent="." unique_id=914360036 instance=ExtResource("1_7ilqw")]
-position = Vector2(89, 243)
+position = Vector2(191, 509)
+
+[node name="Fish" parent="." unique_id=1128632409 instance=ExtResource("2_mrp8g")]
+position = Vector2(355, 379)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1454758829]
+position = Vector2(565, 476)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1568014413]
+shape = SubResource("WorldBoundaryShape2D_8321d")

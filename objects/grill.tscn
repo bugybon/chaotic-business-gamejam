@@ -5,22 +5,29 @@
 [ext_resource type="Script" uid="uid://0hsbo5prmj4t" path="res://scripts/seconds_change_button.gd" id="3_v1fxj"]
 [ext_resource type="Script" uid="uid://dh824dwqt1700" path="res://scripts/start_button.gd" id="4_fu7ck"]
 
-[node name="Grill" type="Node2D" unique_id=914360036]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8321d"]
+size = Vector2(127, 130)
+
+[node name="Grill" type="Area2D" unique_id=985936244]
 script = ExtResource("1_fcmsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2122149179]
 modulate = Color(0.15294118, 0, 0, 1)
 texture = ExtResource("1_y8tck")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632632824]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_8321d")
+
 [node name="Timer" type="Timer" parent="." unique_id=1124007355]
 
 [node name="Control" type="Control" parent="." unique_id=533190465]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -22.0
-offset_top = -191.0
-offset_right = 21.0
-offset_bottom = -95.0
+offset_left = -20.0
+offset_top = 70.0
+offset_right = 23.0
+offset_bottom = 166.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1955818203]
 layout_mode = 0
@@ -72,6 +79,11 @@ layout_mode = 2
 text = "Start"
 script = ExtResource("4_fu7ck")
 
+[node name="Marker2D" type="Marker2D" parent="." unique_id=210615297]
+position = Vector2(0, -32)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Control/VBoxContainer/UpButtons/MinuteUpButton" to="Control/VBoxContainer/UpButtons/MinuteUpButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/UpButtons/SecondsUpButton" to="Control/VBoxContainer/UpButtons/SecondsUpButton" method="_on_pressed"]

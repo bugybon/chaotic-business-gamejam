@@ -7,7 +7,10 @@ var cooktime:int = 0
 @onready var start_button: Button = $Control/VBoxContainer/StartButton
 var time_pattern:String = "%02d:%02d"
 var buttons:Array[Node]
+var food:Area2D
 var cooking:bool = false
+var is_empty:bool = true
+
 signal start_cooking()
 
 func disable_buttons(state:bool)->void:
@@ -41,6 +44,7 @@ func _on_change_cooktime(seconds:int) -> void:
 func _on_start_button_start_cooking() -> void:
 	timer.start(cooktime/10)
 	cooking = true
+	food.start_cooking()
 	disable_buttons(true)
 
 
@@ -50,3 +54,13 @@ func _on_timer_timeout() -> void:
 	cooking = false
 	disable_buttons(false)
 	time_label.text = time_pattern % [0,0]
+
+#
+#func _on_area_entered(area: Area2D) -> void:
+	#area.get_parent().remove_child(area)
+	#self.add_child(area)
+#
+#
+#func _on_area_exited(area: Area2D) -> void:
+	#self.remove_child(area)
+	#get_tree().root.add_child(area)

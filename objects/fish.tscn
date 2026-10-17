@@ -1,15 +1,28 @@
 [gd_scene format=3 uid="uid://c00lrexnw36os"]
 
 [ext_resource type="Texture2D" uid="uid://bh0xc8yfdwl3s" path="res://icon.svg" id="1_elpeb"]
+[ext_resource type="Script" uid="uid://bxrd7wrygvn6f" path="res://scripts/fish.gd" id="1_mmmkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8321d"]
 size = Vector2(130, 129)
 
-[node name="Fish" type="RigidBody2D" unique_id=1619280846]
+[node name="Fish" type="RigidBody2D" unique_id=1804225676]
+script = ExtResource("1_mmmkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730471820]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_8321d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1524620873]
 texture = ExtResource("1_elpeb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=537653894]
+[node name="Area2D" type="Area2D" parent="." unique_id=501746401]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=537653894]
 position = Vector2(-1, 1.5)
 shape = SubResource("RectangleShape2D_8321d")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
