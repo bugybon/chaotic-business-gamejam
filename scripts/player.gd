@@ -6,6 +6,8 @@ extends CombatEntity
 @onready var current_state: Label = $CurrentState
 @onready var weapon_pivot: Marker2D = $WeaponPivot
 @export var weapon_distance:float = 10.0
+var held:Node
+
 signal attack_finished
 
 var direction = "front"
@@ -38,3 +40,7 @@ func apply_movement():
 	var mouse_direction:Vector2 = weapon_pivot.global_position.direction_to(get_global_mouse_position())
 	weapon.global_position = weapon_pivot.global_position + mouse_direction * weapon_distance
 	weapon.rotation = mouse_direction.angle()
+
+
+func _on_pick_up_area_2d_area_entered(area: Area2D) -> void:
+	area.attach(self)

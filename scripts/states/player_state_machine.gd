@@ -14,6 +14,8 @@ func _state_transition() -> void:
 	if Input.is_action_just_pressed("attack_ranged"):
 		state.finished.emit("Ranged")
 		pass
+	if Input.is_action_just_pressed("left_click"):
+		pass
 	
 	match state.name:
 		"Ranged":

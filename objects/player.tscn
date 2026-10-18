@@ -12,9 +12,11 @@
 radius = 61.0
 height = 122.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8321d"]
+radius = 140.03214
+
 [node name="Player" type="CharacterBody2D" unique_id=1804814031]
 script = ExtResource("1_3rerk")
-speed = null
 weapon_distance = 200.0
 max_health = 20
 
@@ -47,3 +49,11 @@ offset_left = -13.0
 offset_top = 76.0
 offset_right = 27.0
 offset_bottom = 99.0
+
+[node name="PickUpArea2D" type="Area2D" parent="." unique_id=1593699852]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea2D" unique_id=1797199512]
+shape = SubResource("CircleShape2D_8321d")
+disabled = true
+
+[connection signal="area_entered" from="PickUpArea2D" to="." method="_on_pick_up_area_2d_area_entered"]

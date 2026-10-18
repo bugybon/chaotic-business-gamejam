@@ -2,14 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://bbymadwhk5cow" path="res://objects/player.tscn" id="1_2b6py"]
 [ext_resource type="PackedScene" uid="uid://bytdmrn425dky" path="res://objects/grill.tscn" id="1_7ilqw"]
+[ext_resource type="PackedScene" uid="uid://c00lrexnw36os" path="res://objects/fish.tscn" id="2_mrp8g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8321d"]
 
 [node name="Kitchen" type="Node2D" unique_id=512525790]
 
 [node name="Player" parent="." unique_id=1804814031 instance=ExtResource("1_2b6py")]
-speed = 100
 weapon_distance = 150.0
+
+[node name="Fish" parent="." unique_id=856256261 instance=ExtResource("2_mrp8g")]
+position = Vector2(355, 123)
+
+[node name="Fish2" parent="." unique_id=596462795 instance=ExtResource("2_mrp8g")]
+position = Vector2(284, 92)
 
 [node name="Grill" parent="." unique_id=914360036 instance=ExtResource("1_7ilqw")]
 position = Vector2(186, 302)
